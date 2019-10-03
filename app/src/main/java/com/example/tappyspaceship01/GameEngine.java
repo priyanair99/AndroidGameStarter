@@ -66,6 +66,13 @@ public class GameEngine extends SurfaceView implements Runnable {
     int enemy2YPosition;
     Rect enemy2Hitbox;
 
+    //add enemy 3
+
+    Bitmap enemy3Image;
+    int enemy3XPosition;
+    int enemy3YPosition;
+    Rect enemy3Hitbox;
+
 
 
 
@@ -85,6 +92,7 @@ int lives = 10;
         this.screenHeight = h;
 
         this.printScreenInfo();
+
         this.ememyImage = BitmapFactory.decodeResource(this.getContext().getResources(),
                 R.drawable.poop64);
         this.enemyXPosition = 1000;
@@ -98,24 +106,34 @@ int lives = 10;
         this.playerImage = BitmapFactory.decodeResource(this.getContext().getResources(),
                 R.drawable.dino64);
         this.playerXPosition = 100;
-        this.playerYPosition = 600;
+        this.playerYPosition = 100;
 
         this.playerHitbox = new Rect(100,
-                600,
+                100,
                 100+playerImage.getWidth(),
-                600+playerImage.getHeight()
+                100+playerImage.getHeight()
         );
         this.enemy2Image = BitmapFactory.decodeResource(this.getContext().getResources(),
                 R.drawable.rainbow64);
 
-        this.enemy2XPosition = 1500;
+        this.enemy2XPosition = 1400;
         this.enemy2YPosition = 500;
 
-        this.enemy2Hitbox = new Rect(1500,
+        this.enemy2Hitbox = new Rect(1400,
                 500,
-                1500+enemy2Image.getWidth(),
+                1400+enemy2Image.getWidth(),
                 500+enemy2Image.getHeight()
         );
+        this.enemy3Image = BitmapFactory.decodeResource(this.getContext().getResources(),
+                R.drawable.candy64);
+
+        this.enemy3XPosition = 1600;
+        this.enemy3YPosition = 300;
+
+        this.enemy3Hitbox = new Rect(1600,
+                300,
+                1600+enemy2Image.getWidth(),
+                300+enemy2Image.getHeight());
 
 
 
@@ -180,9 +198,9 @@ int lives = 10;
 
             this.playerYPosition = this.playerYPosition - 100;
 
-            this.playerHitbox.left  = this.playerXPosition;
+            this.playerHitbox.left = this.playerXPosition;
             this.playerHitbox.top = this.playerYPosition;
-            this.playerHitbox.right  = this.playerXPosition + this.playerImage.getWidth();
+            this.playerHitbox.right = this.playerXPosition + this.playerImage.getWidth();
             this.playerHitbox.bottom = this.playerYPosition + this.playerImage.getHeight();
         }
 
@@ -190,17 +208,17 @@ int lives = 10;
             // if mouseup, then move player down
             this.playerYPosition = this.playerYPosition + 10;
 
-            this.playerHitbox.left  = this.playerXPosition;
+            this.playerHitbox.left = this.playerXPosition;
             this.playerHitbox.top = this.playerYPosition;
-            this.playerHitbox.right  = this.playerXPosition + this.playerImage.getWidth();
+            this.playerHitbox.right = this.playerXPosition + this.playerImage.getWidth();
             this.playerHitbox.bottom = this.playerYPosition + this.playerImage.getHeight();
         }
         this.enemyXPosition = this.enemyXPosition - 25;
 
         // MOVE THE HITBOX (recalcluate the position of the hitbox)
-        this.enemyHitbox.left  = this.enemyXPosition;
+        this.enemyHitbox.left = this.enemyXPosition;
         this.enemyHitbox.top = this.enemyYPosition;
-        this.enemyHitbox.right  = this.enemyXPosition + this.ememyImage.getWidth();
+        this.enemyHitbox.right = this.enemyXPosition + this.ememyImage.getWidth();
         this.enemyHitbox.bottom = this.enemyYPosition + this.ememyImage.getHeight();
 
         if (this.enemyXPosition <= 0) {
@@ -210,9 +228,9 @@ int lives = 10;
 
             // restart the hitbox in the starting position
             // Anytime you move the enemy, you also need to move the hitbox
-            this.enemyHitbox.left  = this.enemyXPosition;
+            this.enemyHitbox.left = this.enemyXPosition;
             this.enemyHitbox.top = this.enemyYPosition;
-            this.enemyHitbox.right  = this.enemyXPosition + this.ememyImage.getWidth();
+            this.enemyHitbox.right = this.enemyXPosition + this.ememyImage.getWidth();
             this.enemyHitbox.bottom = this.enemyYPosition + this.ememyImage.getHeight();
 
         }
@@ -225,22 +243,60 @@ int lives = 10;
         this.enemy2XPosition = this.enemy2XPosition - 25;
 
         // MOVE THE HITBOX (recalcluate the position of the hitbox)
-        this.enemy2Hitbox.left  = this.enemy2XPosition;
+        this.enemy2Hitbox.left = this.enemy2XPosition;
         this.enemy2Hitbox.top = this.enemy2YPosition;
-        this.enemy2Hitbox.right  = this.enemy2XPosition + this.enemy2Image.getWidth();
+        this.enemy2Hitbox.right = this.enemy2XPosition + this.enemy2Image.getWidth();
         this.enemy2Hitbox.bottom = this.enemy2YPosition + this.enemy2Image.getHeight();
 
         if (this.enemy2XPosition <= 0) {
             // restart the enemy in the starting position
-            this.enemy2XPosition = 1500;
+            this.enemy2XPosition = 1400;
             this.enemy2YPosition = 500;
 
             // restart the hitbox in the starting position
             // Anytime you move the enemy, you also need to move the hitbox
-            this.enemy2Hitbox.left  = this.enemy2XPosition;
+            this.enemy2Hitbox.left = this.enemy2XPosition;
             this.enemy2Hitbox.top = this.enemy2YPosition;
-            this.enemy2Hitbox.right  = this.enemy2XPosition + this.enemy2Image.getWidth();
+            this.enemy2Hitbox.right = this.enemy2XPosition + this.enemy2Image.getWidth();
             this.enemy2Hitbox.bottom = this.enemy2YPosition + this.enemy2Image.getHeight();
+
+            this.enemy2XPosition = this.enemy2XPosition - 25;
+
+            // MOVE THE HITBOX (recalcluate the position of the hitbox)
+            this.enemy2Hitbox.left = this.enemy2XPosition;
+            this.enemy2Hitbox.top = this.enemy2YPosition;
+            this.enemy2Hitbox.right = this.enemy2XPosition + this.enemy2Image.getWidth();
+            this.enemy2Hitbox.bottom = this.enemy2YPosition + this.enemy2Image.getHeight();
+        }
+
+        this.enemy3XPosition = this.enemy3XPosition - 25;
+
+        // MOVE THE HITBOX (recalcluate the position of the hitbox)
+        this.enemy3Hitbox.left = this.enemy3XPosition;
+        this.enemy3Hitbox.top = this.enemy3YPosition;
+        this.enemy3Hitbox.right = this.enemy3XPosition + this.enemy3Image.getWidth();
+        this.enemy3Hitbox.bottom = this.enemy3YPosition + this.enemy3Image.getHeight();
+
+        if (this.enemy3XPosition <= 0) {
+            // restart the enemy in the starting position
+            this.enemy3XPosition = 1600;
+            this.enemy3YPosition = 300;
+
+            // restart the hitbox in the starting position
+            // Anytime you move the enemy, you also need to move the hitbox
+            this.enemy3Hitbox.left = this.enemy3XPosition;
+            this.enemy3Hitbox.top = this.enemy3YPosition;
+            this.enemy3Hitbox.right = this.enemy3XPosition + this.enemy2Image.getWidth();
+            this.enemy3Hitbox.bottom = this.enemy3YPosition + this.enemy3Image.getHeight();
+
+            this.enemy3XPosition = this.enemy3XPosition - 25;
+
+            // MOVE THE HITBOX (recalcluate the position of the hitbox)
+            this.enemy3Hitbox.left = this.enemy3XPosition;
+            this.enemy3Hitbox.top = this.enemy3YPosition;
+            this.enemy3Hitbox.right = this.enemy3XPosition + this.enemy3Image.getWidth();
+            this.enemy3Hitbox.bottom = this.enemy3YPosition + this.enemy3Image.getHeight();
+
 
         }
 
@@ -262,13 +318,9 @@ int lives = 10;
             // 1. Restart the player
             // 2. Restart the player's hitbox
             this.playerXPosition = 100;
-            this.playerYPosition = 600;
+            this.playerYPosition =  700;
 
-            this.playerHitbox = new Rect(100,
-                    600,
-                    100+playerImage.getWidth(),
-                    600+playerImage.getHeight()
-            );
+
 
             // decrease the lives
             lives = lives - 1;
@@ -276,30 +328,9 @@ int lives = 10;
         }
 
 
-        // @TODO:  Check collisions between enemy2 and player
-        if (this.playerHitbox.intersect(this.enemy2Hitbox) == true) {
-            // the enemy and player are colliding
-            Log.d(TAG, "++++++ENEMY 2 AND PLAYER COLLIDING!");
 
-            // @TODO: What do you want to do next?
 
-            // RESTART THE PLAYER IN ORIGINAL POSITION
-            // -------
-            // 1. Restart the player
-            // 2. Restart the player's hitbox
-            this.playerXPosition = 100;
-            this.playerYPosition = 600;
 
-            this.playerHitbox = new Rect(100,
-                    600,
-                    100+playerImage.getWidth(),
-                    600+playerImage.getHeight()
-            );
-
-            // decrease the lives
-            lives = lives - 1;
-
-        }
 
 
 
@@ -318,6 +349,13 @@ int lives = 10;
             // configure the drawing tools
             this.canvas.drawColor(Color.argb(255,255,255,255));
             paintbrush.setColor(Color.WHITE);
+
+            this.canvas.drawRect(this.playerXPosition,
+                    this.playerYPosition,
+                    this.playerXPosition + 400,     // 400 is width of racket
+                    this.playerYPosition + 50,    // 50 is height of racket
+                    paintbrush);
+            paintbrush.setColor(Color.BLACK);
 
 
             // DRAW THE PLAYER HITBOX
@@ -344,6 +382,10 @@ int lives = 10;
             canvas.drawBitmap(enemy2Image, enemy2XPosition, enemy2YPosition, paintbrush);
             // 2. draw the enemy's hitbox
             canvas.drawRect(this.enemy2Hitbox, paintbrush);
+
+            canvas.drawBitmap(enemy3Image, enemy3XPosition, enemy3YPosition, paintbrush);
+            canvas.drawRect(this.enemy3Hitbox, paintbrush);
+
 
 
 
