@@ -105,12 +105,12 @@ int lives = 10;
 
         this.playerImage = BitmapFactory.decodeResource(this.getContext().getResources(),
                 R.drawable.dino64);
-        this.playerXPosition = 100;
+        this.playerXPosition = 200;
         this.playerYPosition = 100;
 
-        this.playerHitbox = new Rect(100,
+        this.playerHitbox = new Rect(200,
                 100,
-                100+playerImage.getWidth(),
+                200+playerImage.getWidth(),
                 100+playerImage.getHeight()
         );
         this.enemy2Image = BitmapFactory.decodeResource(this.getContext().getResources(),
@@ -317,9 +317,12 @@ int lives = 10;
             // -------
             // 1. Restart the player
             // 2. Restart the player's hitbox
-            this.playerXPosition = 100;
-            this.playerYPosition =  700;
-
+            this.playerXPosition = -300;
+            this.playerYPosition = -300 ;
+            this.playerHitbox = new Rect(-300,
+                    -300,
+                    -300+playerImage.getWidth(),
+                    -300+playerImage.getHeight());
 
 
             // decrease the lives
